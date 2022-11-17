@@ -37,10 +37,10 @@ function Ball:checkBorder()
         self.direction.x = self.startSpeed
         return "left"
     elseif self.position.y <= self.radius then
-        self.direction.y = -self.direction.y
+        self.direction.y = math.abs(self.direction.y)
         return "_"
     elseif self.position.y >= WindowHeight - self.radius then
-        self.direction.y = -self.direction.y
+        self.direction.y = -math.abs(self.direction.y)
         return "_"
     end
 end
