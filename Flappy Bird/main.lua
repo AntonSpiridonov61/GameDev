@@ -38,6 +38,8 @@ function love.load()
     WindowWidth = love.graphics.getWidth()
     WindowHeight = love.graphics.getHeight()
     font = love.graphics.newFont("resources/AtariClassic-Regular.ttf", sizeFont)
+    love.graphics.setFont(font)
+
     
     bird = Bird:create()
     pipe1 = Pipe:create(WindowWidth)
