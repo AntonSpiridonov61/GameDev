@@ -13,6 +13,8 @@ function Bird:create()
     bird.posX = 150
     bird.speed = 0
     bird.angle = 0
+    bird.upAngle = math.rad(-40)
+    bird.downAngle = math.rad(70)
     bird.upImg = love.graphics.newImage("resources/sprites/redbird-upflap.png")
     bird.midImg = love.graphics.newImage("resources/sprites/redbird-midflap.png")
     bird.downImg = love.graphics.newImage("resources/sprites/redbird-downflap.png")
@@ -52,13 +54,10 @@ function Bird:update(dt)
         end
     end
 
-    if self.speed >= keyUpSpeed and self.speed <= 0 then
-        self.angle = -0.7
-    elseif self.speed >= 0 and self.speed <= 180 then
-        self.angle = self.angle + (5 * dt)
-    else
-        self.angle = 1.1
-    end
+    local ratio = self.speed / keyUpSpeed
+    if ratio > 1 then ratio = 1 elseif ratio < -1 then ratio = -1 end
+    self.angle = ((-ratio + 1) / 2) * (self.downAngle - self.upAngle) + self.upAngle
+
     self.speed = self.speed + (attraction * dt)
     self.posY = self.posY + (self.speed * dt)
 end
