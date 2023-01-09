@@ -54,10 +54,12 @@ function Bird:update(dt)
         end
     end
 
+
     local ratio = self.speed / keyUpSpeed
     if ratio > 1 then ratio = 1 elseif ratio < -1 then ratio = -1 end
     self.angle = ((-ratio + 1) / 2) * (self.downAngle - self.upAngle) + self.upAngle
 
+    
     self.speed = self.speed + (attraction * dt)
     self.posY = self.posY + (self.speed * dt)
 end

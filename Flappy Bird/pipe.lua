@@ -44,7 +44,7 @@ function Pipe:draw()
         self.texture,
         self.posX + self.width, 
         self.spaceY,
-        3.14
+        math.pi
     )
 end
 
